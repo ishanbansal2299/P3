@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int i,n,j;
+	cout<<"Enter the number of rows:";
+	cin>>n;
+	int m=1;
+	for(i=1;i<=n;i++)
+	{
+		for(j=1;j<=i;j++)
+		{
+			if(i%2==0)
+			{
+				cout<<"-"<<m<<" ";
+			}
+			else
+			{
+				cout<<m<<" ";
+			}
+			m++;
+		}
+		cout<<"\n";
+	}
+}

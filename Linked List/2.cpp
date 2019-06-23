@@ -1,0 +1,70 @@
+#include<bits/stdc++.h>
+using namespace std;
+class node
+{
+	public:
+		int data;
+		node *next;
+};
+int greater_ride_side(node *head)
+{
+	node *current = head;
+    node *maxnode = head; 
+    node *temp; 
+  
+    while (current != NULL && current->next != NULL)
+	{ 
+        if (current->next->data < maxnode->data) 
+		{ 
+			temp = current->next; 
+            current->next = temp->next; 
+            delete(temp); 
+        } 
+        else 
+		{ 
+            current = current->next; 
+            maxnode = current; 
+        } 
+    } 
+} 
+void insert(node **head1, int value)
+{
+	node *temp=new node();
+	temp->data=value;
+	temp->next=NULL;
+	if(*head1==NULL)
+	{
+		*head1=temp;
+		return;
+	}
+	node *last_node=*head1;
+	while(last_node->next!=NULL)
+	{
+		last_node=last_node->next;
+	}
+	last_node->next=temp;
+	return;
+}
+void printlist(node *head)
+{
+	while(head!=NULL)
+	{
+		cout<<head->data<<" ";
+		head=head->next;
+	}
+}
+int main()
+{
+	node *head=NULL;
+	insert(&head,9);
+	insert(&head,2);
+	insert(&head,3);
+	insert(&head,5);
+	insert(&head,4);
+	insert(&head,6);
+	insert(&head,8);
+	printlist(head);
+	cout<<"\n";
+	greater_ride_side(head);
+	printlist(head);
+}
